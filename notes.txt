@@ -1,0 +1,34 @@
+This file is to record interesting information about the profiling
+
+If not enough VM for graph then process kills itself.
+
+C malloc does not alloc RAM, but only VM.
+
+Graphs with greater number of nodes might be smaller because less edges.
+
+We want to profile memory usage of the graph, but framework usage varies as well.
+Although it is possible to compute memory usage of a python object, it is an expensive operation
+which takes a lot of time when graphs starts having many sub objects (5 mn for a 2000 node graphs), 
+using pickle.dumps. There might be a better way, but in general it is not an easy thing to do.
+Therefore, it makes more sense to show global memory usage, since some of the RAM allocated to the framework
+might be transferred into VM.
+
+Add filesize to profile metrics.
+
+Zen objects are roughly 3 times bigger when loaded into memory.
+
+For 75 MB, maximum available vm is ~271 MB
+
+Using pickle dumps : 
+Empty graph is 4200 bytes => 4kB
+100 node graph is 15,753 bytes ~ 15kB => 100 nodes(erdos_renyi) ~= 11kB
+1000 node graph is 1,784,598 bytes ~ 1.7 MB
+10000 node graph is likely to be 100MB
+20000 node graph would be 400MB
+
+
+Available VM :
+Taking into account zen memory usage, 150 MB of RAM give us an vm availability of 889MB.
+
+
+The point is to constrain the memory usable by the graph but not too much otherwise there is not enough space for virtual memory and the program crashes.
