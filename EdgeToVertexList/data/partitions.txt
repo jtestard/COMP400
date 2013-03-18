@@ -1,0 +1,11 @@
+%This is /Users/julestestard/eclipseProjects/EdgeToVertexList/data/partitions.txt
+	9 11
+	2	3	4	5	6	7	9
+	1	9
+	1	7
+	1	6
+	1
+	1	4
+	1	8	3
+	7
+	1	2
