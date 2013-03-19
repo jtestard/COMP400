@@ -2,4 +2,8 @@
 storage
 .settings
 .pydevproject
-edgeToVertexList/bin
+EdgeToVertexList/bin
+EdgeToVertexList/.project
+EdgeToVertexList/.DS_Store
+EdgeToVertexList/.classpath
+EdgeToVertexList/data

@@ -21,13 +21,13 @@ public class Graph {
 		try {
 			BufferedWriter writer = new BufferedWriter(new FileWriter(filename));
 			writer.write("%This is " + filename + "\n");
+			System.out.println("Writing to file " + filename + "...");
 			writer.write("\t"+vertices.size()+" "+edges.size()+"\n");
 			for (Vertex v : vertices.values()) {
 				String line = "";
 				for (Edge e : v.edges) {
 					line += "\t"+e.otherVertex(v).index;
 				}
-				System.out.println(line);
 				writer.write(line + "\n");
 			}
 			writer.close();
@@ -49,7 +49,10 @@ public class Graph {
 			String line;
 			while ((line = reader.readLine()) != null) {
 				String[] edgeLine = line.split(" ");
-				if (edgeLine.length != 2) {
+				if (edgeLine.length < 2) {
+                                    continue;
+                                }
+                                if (edgeLine.length > 2) {
 					throw new FormatException();
 				}
 				long n1 = Long.parseLong(edgeLine[0]);//edgeLine[0]
