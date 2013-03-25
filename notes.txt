@@ -32,3 +32,12 @@ Taking into account zen memory usage, 150 MB of RAM give us an vm availability o
 
 
 The point is to constrain the memory usable by the graph but not too much otherwise there is not enough space for virtual memory and the program crashes.
+
+
+==== At this point we are able to generate graphs, generate partitions and give an estimate upper bound on how many partitions have to be loaded 
+in order to answer the queries. We are currently investigating the different partitioning schemes available using the chaco tool. We are investigating the 
+efficiency of the technique. We would want to compare the results found with K&L to some found using a randomized partition.
+
+Observations:
+We note a little difference between 'no edge cost' KL solution and a random partition when k=1, but otherwise the difference is pretty minor. This is when we have 
+a total of 16 partitions. We now will attempt to compute results with more and with less partitions.

@@ -51,8 +51,12 @@ public class Graph {
 	 * @param filename
 	 * @return
 	 */
-	public static Graph readFromEdgeList(String filename) {
+	public static Graph readFromEdgeList(String filename, int size) {
 		Graph graph = new Graph();
+		if (size>0) {
+			graph.vertexSize = size;
+			graph.vertices = new Vertex[graph.vertexSize];			
+		}
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(filename));
 			String line;
