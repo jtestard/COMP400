@@ -1,0 +1,6 @@
+KLEdgeCosts/small,barabasi k=1 k=2 k=3 k=4
+barabasi1000.graph 1.18 2.94 7.43 16.18
+barabasi11000.graph 1.17 2.27 5.23 10.38
+barabasi21000.graph 1.08 1.82 4.44 10.21
+barabasi31000.graph 1.06 1.69 3.44 6.7
+barabasi41000.graph 1.09 1.79 3.96 8.51

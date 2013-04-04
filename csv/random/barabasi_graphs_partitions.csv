@@ -1,0 +1,6 @@
+random,barabasi k=1 k=2 k=3 k=4
+barabasi1000.graph 1.57 7.39 11.89 14.47
+barabasi11000.graph 1.95 7.79 12.21 14.73
+barabasi21000.graph 1.57 7.3 11.92 14.21
+barabasi31000.graph 1.62 7.16 11.86 14.25
+barabasi41000.graph 1.81 8.04 12.53 14.83

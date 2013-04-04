@@ -15,10 +15,22 @@ public class Graph {
 	public int vertexSize;
 	public int edgeSize;
 	public Vertex[] vertices;
+	public ArrayList<Edge> edges;
 
 	public Graph() {
 		edgeSize = 0;
 		vertexSize = 0;
+		edges = new ArrayList<Edge>();
+	}
+	
+	public void computeEdgeCosts(boolean costEnabled) {
+		if (costEnabled) {
+			for (Vertex v : vertices) {
+				for (Edge e : v.edges) {
+					e.cost = e.v1.degree() + e.v2.degree() - 1;
+				}
+			}
+		}
 	}
 
 	public void convertFormat(String filename) {
@@ -28,13 +40,13 @@ public class Graph {
 			BufferedWriter writer = new BufferedWriter(new FileWriter(filename));
 			writer.write("%This is " + filename + "\n");
 			System.out.println("Writing to file " + filename + "...");
-			writer.write("\t" + vertexSize + " " + edgeSize + "\n");
+			writer.write("\t" + vertexSize + " " + edgeSize + " 001" + "\n");
 			for (int i = 0 ; i < vertexSize ; i++) {
 				Vertex v = vertices[i];
 				String line = "";
 				if (v!=null) {
 					for (Edge e : v.edges) {
-						line += "\t" + e.otherVertex(v).index;
+						line += "\t" + e.otherVertex(v).index + " " + e.cost;
 					}
 				}
 				writer.write(line + "\n");				
@@ -43,6 +55,19 @@ public class Graph {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public void convertFacebook(String filename) {
+		try {
+			BufferedWriter writer = new BufferedWriter(new FileWriter(filename));
+			System.out.println("Writing to file " + filename + "...");	
+			for (Edge e : edges) {
+				writer.write(e.toString()+"\n");
+			}
+			writer.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}		
 	}
 
 	/**
@@ -81,11 +106,15 @@ public class Graph {
 				if (!graph.vertexAdded(n2)) {
 					graph.vertices[n2-1]=new Vertex(n2);
 				}
-				Edge edge = new Edge(graph.vertices[n1-1],graph.vertices[n2-1],0);
+				Edge edge = new Edge(graph.vertices[n1-1],graph.vertices[n2-1],1);
+				if (!graph.edgeAlreadyExists(edge)) {
+					graph.edges.add(edge);
+					graph.vertices[n1-1].edges.add(edge);
+					graph.vertices[n2-1].edges.add(edge);
+				}
 				graph.vertices[n1-1].edges.add(edge);
 				graph.vertices[n2-1].edges.add(edge);
-				graph.edgeSize++;
-//				// Add vertex to graph that is not already in vertices
+				graph.edgeSize++;				
 			}
 			reader.close();
 		} catch (IOException e) {
@@ -105,6 +134,14 @@ public class Graph {
 				if (v.index==index)
 					return true;
 		}
+		return false;
+	}
+	
+	private boolean edgeAlreadyExists(Edge other) {
+		if (vertices[(int)other.v2.index-1].edges.contains(other))
+			return true;
+		if (vertices[(int)other.v1.index-1].edges.contains(other))
+			return true;
 		return false;
 	}
 }

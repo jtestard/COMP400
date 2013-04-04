@@ -41,3 +41,35 @@ efficiency of the technique. We would want to compare the results found with K&L
 Observations:
 We note a little difference between 'no edge cost' KL solution and a random partition when k=1, but otherwise the difference is pretty minor. This is when we have 
 a total of 16 partitions. We now will attempt to compute results with more and with less partitions.
+
+
+We should add edge weights to our example for partitioning.
+
+
+
+
+
+
+===== Monday march 25th ===========
+
+Tasks :
+	-	Generate power law graphs.
+	-	Analyze the graph using three techniques : random, ML-KL (no edge costs), ML-KL (with edge costs).
+	-	render the graphs.
+	
+Assuming 500 friends on average per person on Facebook and approximating the user base to 1 billion, we have an average edge cover for each node of 0.0000005 which very sparse
+(much sparser than the sparse graphs used here. We should maybe consider these graphs more), ie generate more graphs with a smaller amount of edges and more vertices.
+
+Very good news for the barabasi graphs when fairly sparse. The same is not true when the distributions are more dense. We notice that the difference between the KL partitioning and 
+a fully random partitioning gets larger when k gets bigger. When k=4, the number of partitions visited is reduced by up to 90%.
+
+
+We are now proceeding to comparing partitioning with or without edge costs. Generating the analysis has been successful, we are sure to compare partitionings that orignated from
+the same graph. We notice that there is some randomness. Depending on the situation, edge costs may or may not bring a benefit.
+The results were obtained using averages over 10 random start nodes.
+We try now over a larger sample to see if we can get rid (at least partly) of this randomness.
+
+
+===== Wednesday April 3rd =========
+
+We now attempted to uncover facebook graphs. The number of edges is larger than expected but a lot of duplicate edges. Have to manage duplication.

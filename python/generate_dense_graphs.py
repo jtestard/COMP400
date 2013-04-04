@@ -10,16 +10,17 @@ if __name__ == '__main__':
 import zen
 import profile
 import random
-import zen.io.memlist as memlist
+import zen.io.edgelist as edgelist
 
-max_size = 20000
-increment = 1000
+max_size = 41000
+increment = 10000
+start = 1000
 
 profile.start_clock()
 file = open('csv/dense_graphs.csv', 'w')
 file.write("Nodes GenerateTime SaveTime FileSize\n")
 #The +1 on the max size is just to be sure we include the max size in our range.
-for i in range(increment,max_size+1,increment):
+for i in range(start,max_size+1,increment):
     edge_probability = random.uniform(0,1.0)
     scaling = 0.05
     base_value = 0.05
@@ -35,8 +36,8 @@ for i in range(increment,max_size+1,increment):
     print "Graph " + filename + " has taken " + gentime + " to generate."
     
     #Saving the generated graph
-    memlist.write(G,'storage/dense/' + filename)
-    filesize = profile.filesize('storage/dense/' + filename)
+    edgelist.write(G,'storage/edgelist/dense/' + filename)
+    filesize = profile.filesize('storage/edgelist/dense/' + filename)
     filesize = filesize/1024
     
     #Profiling IO time

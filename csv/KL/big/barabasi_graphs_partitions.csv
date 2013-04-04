@@ -1,0 +1,6 @@
+KL/big,barabasi k=1 k=2 k=3 k=4
+barabasi1000.graph 1.03 1.46 1.96 2.65
+barabasi11000.graph 1.0 1.1 1.35 1.9
+barabasi21000.graph 0.99 1.08 1.52 2.16
+barabasi31000.graph 0.99 1.09 1.38 1.88
+barabasi41000.graph 0.99 1.03 1.14 1.46

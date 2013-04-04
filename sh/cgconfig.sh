@@ -1,4 +1,3 @@
-#!/bin/sh
 #Create the group to be added in cggroups.
 GROUP = "group limited {
 	memory {
@@ -14,7 +13,8 @@ sudo $GROUP >> /etc/cgconfig.conf
 sudo restart cgconfig
 
 #Change ownership for directory
-sudo chown -R jtesta /sys/fs/cgroup/memory/limited
+
+sudo chown -R $(whoami) /sys/fs/cgroup/memory/limited
 
 #Now you can exec your files with the restriction using a command such as 
 #cgexec -g memory:limited command

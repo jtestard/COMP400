@@ -26,7 +26,7 @@ public class Edge {
 	 */
 	@Override
 	public String toString() {
-		return "Edge [v1=" + v1 + ", v2=" + v2 + ", cost=" + cost + "]";
+		return (v1.index-1) + " " + (v2.index-1);
 	}
 	
 	public Vertex otherVertex(Vertex v) {
@@ -38,4 +38,21 @@ public class Edge {
 			return null;
 		}
 	}
+	
+	@Override
+	public boolean equals(Object o) {
+		Edge e = (Edge) o;
+		if (this.v1== e.v1 && this.v2 == e.v2) {
+			return true;
+		} else if (this.v2 == e.v1 && this.v1 == e.v2) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	@Override
+	public int hashCode() {
+		return (int)(v1.index+v2.index);
+	}	
 }

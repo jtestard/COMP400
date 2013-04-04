@@ -12,14 +12,15 @@ import profile
 import random
 import zen.io.edgelist as edgelist
 
-max_size = 20000
-increment = 1000
+max_size = 41000
+increment = 10000
+start = 1000
 
 profile.start_clock()
 file = open('csv/sparse_graphs.csv', 'w')
 file.write("Nodes GenerateTime SaveTime FileSize\n")
 #The +1 on the max size is just to be sure we include the max size in our range.
-for i in range(increment,max_size+1,increment):
+for i in range(start,max_size+1,increment):
     edge_probability = 1.0/i;
     scaling = 10
     #I only want my graph to be dense with a small probability (average density = 0.03125*#nodes)
