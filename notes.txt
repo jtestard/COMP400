@@ -73,3 +73,11 @@ We try now over a larger sample to see if we can get rid (at least partly) of th
 ===== Wednesday April 3rd =========
 
 We now attempted to uncover facebook graphs. The number of edges is larger than expected but a lot of duplicate edges. Have to manage duplication.
+The duplication was managed using an alternate file for the jar (maybe should incorporate this mechanism on a seperate jar.
+Duplication has to be verified.
+
+The partitioning has happened on duplicated data (data specified both ways). The analysis, however used the duplication free version of the facebook
+graph. We have to make sure the two are consistent (and understand why the duplication free graph cannot be easily partitioned by chaco ==> structure
+of the graph might be corrupt). Another bug is the presence of the "no object reference warnings" about the graph.
+
+These messages usually mean we are trying to use an index not assigned to a node. 
